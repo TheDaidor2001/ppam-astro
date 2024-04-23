@@ -3,12 +3,14 @@ interface Props {
     title: string;
     description: string;
     articleClasses: string;
+    link?: string;
 }
 
-const { description, title, articleClasses } = Astro.props;
+const { description, title, articleClasses, link } = Astro.props;
 ---
 
-<article
+<a
+    href={link}
     class=`bg-white shadow-lg border-2 ${articleClasses} p-5 rounded-lg min-h-56  hover:scale-105 transition-all hover:cursor-pointer`
 >
     <slot />
@@ -18,4 +20,4 @@ const { description, title, articleClasses } = Astro.props;
     <p class="text-center mt-2 font-normal text-sm">
         {description}
     </p>
-</article>
+</a>
