@@ -1,5 +1,8 @@
 ---
 import CardIndex from "../components/CardIndex.astro";
+import CreateUser from "../components/icons/CreateUser.astro";
+import Program from "../components/icons/Program.astro";
+import ListUser from "../components/icons/ListUser.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -11,16 +14,23 @@ import Layout from "../layouts/Layout.astro";
 			title="Lista de Voluntarios"
 			description="Aquí puedes listar y ver a todos los participantes del PPAM de Malabo"
 			articleClasses="border-green-500 text-green-500 hover:text-white hover:bg-green-500 "
-		/>
+		>
+			<ListUser class="size-20 mx-auto" />
+		</CardIndex>
+
 		<CardIndex
 			title="Creación de voluntarios"
 			description="Aquí puedes crear nuevos voluntarios para el PPAM"
 			articleClasses="border-cyan-500 text-cyan-500 hover:text-white hover:bg-cyan-500 "
-		/>
+		>
+			<CreateUser class="size-20 mx-auto" />
+		</CardIndex>
 		<CardIndex
 			title="Crear Programa"
 			description="Aquí puedes crear un nuevo programa para el PPAM"
 			articleClasses="border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 "
-		/>
+		>
+			<Program />
+		</CardIndex>
 	</section>
 </Layout>
