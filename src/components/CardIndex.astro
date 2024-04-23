@@ -1,0 +1,23 @@
+---
+import ListUser from "./icons/ListUser.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    articleClasses: string;
+}
+
+const { description, title, articleClasses } = Astro.props;
+---
+
+<article
+    class=`bg-white shadow-lg border-2 ${articleClasses} p-5 rounded-lg min-h-56  hover:scale-105 transition-all hover:cursor-pointer`
+>
+    <ListUser class="size-20 mx-auto" />
+    <h1 class={`text-3xl mt-5 text-center font-semibold`}>
+        {title}
+    </h1>
+    <p class="text-center mt-2 font-normal text-sm">
+        {description}
+    </p>
+</article>
