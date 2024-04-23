@@ -1,9 +1,68 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { db, Users } from "astro:db";
+
+const voluntarios = await db.select().from(Users);
 ---
 
 <Layout title="Lista de voluntarios">
     <section class="max-w-7xl mx-auto">
-        <h1>Hola mundo</h1>
+        <h1 class="text-center text-4xl mt-10">Hola mundo</h1>
+
+        <div class="relative overflow-x-auto mt-10">
+            <table
+                class="w-full text-sm text-left rtl:text-right text-gray-500"
+            >
+                <thead class="text-xs uppercase bg-blue-500 text-white">
+                    <tr>
+                        <th scope="col" class="px-6 py-3"> Nombre completo </th>
+                        <th scope="col" class="px-6 py-3"> Congregación </th>
+                        <th scope="col" class="px-6 py-3"> Contacto </th>
+                        <th scope="col" class="px-6 py-3"> Observaciones </th>
+                        <th scope="col" class="px-6 py-3"> Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        voluntarios.map((voluntario) => (
+                            <tr class="bg-white border-b">
+                                <th
+                                    scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                                >
+                                    {voluntario.nombre}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {" "}
+                                    {voluntario.congregacion}{" "}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {" "}
+                                    {voluntario.contacto}{" "}
+                                </td>
+                                <td class="px-6 py-4 flex gap-3 items">
+                                    {voluntario.isPrecursor && (
+                                        <span class="bg-blue-200 text-blue-500 border border-blue-500 px-2 py-1 rounded-2xl text-center font-semibold text-xs">
+                                            Precursor
+                                        </span>
+                                    )}
+                                    {voluntario.isAvailable && (
+                                        <span class="bg-green-200 text-green-500 border border-green-500 px-2 py-1 rounded-2xl text-center font-semibold text-xs">
+                                            Disponible
+                                        </span>
+                                    )}
+                                    {!voluntario.isAvailable && (
+                                        <span class="bg-red-200 text-red-500 border border-red-500 px-2 py-1 rounded-2xl text-center font-semibold text-xs">
+                                            No Disponible
+                                        </span>
+                                    )}
+                                </td>
+                                <td class="px-6 py-4 flex gap-3"></td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
     </section>
 </Layout>
