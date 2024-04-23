@@ -1,10 +1,11 @@
 import { column, defineDb, defineTable } from 'astro:db';
 
-const Voluntario = defineTable({
+
+const Users = defineTable({
   columns: {
     id: column.text({primaryKey: true, unique: true}),
     nombre: column.text(),
-    congregación: column.text(),
+    congregacion: column.text(),
     contacto: column.text(),
     isPrecursor: column.boolean(),
     isAvailable: column.boolean(),
@@ -16,6 +17,6 @@ const Voluntario = defineTable({
 // https://astro.build/db/config
 export default defineDb({
   tables: {
-    Voluntario
+    Users
   }
 });
